@@ -1,0 +1,1162 @@
+Symfony Day 2 to Day 5
+
+Start symfony new project
+
+go to folder where you will create the folder of your project
+right click - choose: Open Git Bash here
+
+symfony new --webapp nameOfYourProject
+
+open your folder with VSC
+
+
+Example: search: create upload-File for symfony 
+https://symfony.com/doc/current/controller/upload_file.html
+
+
+
+Controller 
+create:
+cmd oder terminal in VSC:
+php bin/console make:controller
+
+symfony console make:controller
+
+next step: give the new controller a name
+
+
+twig language:
+Strg (+) shift (+) p
+put in: Format ... with
+choose: 
+
+show in browser:
+symfony serve
+
+scroll to server folder (green field) and right click at https://127.0.0.1:8000 with "Strg"
+- open project in browser 
+
+path for links: check controller (#[Route('/', ....) and than html-code for example navbar.html.twig:
+
+path for <a href={{ path("app_home_static") }}">: <-- this example HomeStaticController.php:  #[Route('/', name: 'app_home_static')] only take the name -->
+
+path for images : asset means that the path starts at the public folder:
+<img src="{{ asset("css/nav.css") }}"
+or
+<img src="{{ asset("images/product_images/name of picture") }}"
+
+include only for html-components, its starts at "templates"-level
+			{% include 'components/navbar/navbar.html.twig' %}
+
+to include css & js: always without the symfony "include":
+path for css & js : asset means that the path starts at the public folder:
+
+    		<link rel="stylesheet" href="{{ asset('styles/base.css') }}">
+  			<script src="{{ asset('JS/base.js') }}"></script>
+
+twig.symfony Dokumentation:
+https://twig.symfony.com/
+go to docs
+loops
+go to "for"
+
+example from twig-documentation: if else Sold out:
+{% if product.stock > 10 %}
+   Available
+{% elseif product.stock > 0 %}
+   Only {{ product.stock }} left!
+{% else %}
+   Sold-out!
+{% endif %}
+
+Date important:
+    {{ "now"|date("d/m/Y") }}
+
+
+
+
+
+
+
+Sweetallert instal und import to a project at "assets" -" "styles" - "app.css"
+1. to instal take code from https://sweetalert2.github.io/ and scroll down to "DOWNLOAD & INSTALL"
+npm install sweetalert2:
+2. import  at app.css
+npm install sweetalert2
+
+
+Controller Vorschlag Suggestion MJ:
+1 Controller per CRUD (only adm) - 1 CRUD per entity (e.g. User, Products) -
+1. create user controller 
+2. create products_cars 
+3. 
+1 Controller für User
+1 Controller für adm
+
+Create a new database:
+to create a database
+1. open the terminal and type:
+2.
+    symfony console doctrine:database:create
+
+and to create the table (entity already exists)
+
+symfony console doctrine:schema:update --force --complete
+
+go to filee ".env" at vsc at your project:
+hold the connection to the database,
+go there to 
+DATABASE_URL="postgrsql://app:!Change....
+comment this line aout
+anduncomment the line with "...Version=8.."
+
+DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=8.0.32&charset=utf8mb4"
+change "app" to "root" 
+Delete "!ChangeMe!" because we have no password otherwise place it there
+then go to " ...:3306/app?..." and
+
+change "app" to your  database-name
+
+? Where, at which file, do i find the information like: root, no password, etc
+
+DATABASE_URL="mysql://root:@127.0.0.1:3306/SYM_Part?serverVersion=8.0.32&charset=utf8mb4"
+
+Create the database at SYMFONY:
+go to Terminal (cmd-Mode)  write after "C:\xampp\htdocs\Symfony\SYM_Part>"
+symfony console doctrine:database:create  - it is from the official documentation of symfony.com/doc/doctrine.html-
+
+alternate, both works:
+$php bin/console doctrine:database:create 
+
+result: a database named "SYM_Part" is created at mySQL
+
+Go to 
+localhost/phpmyadmin/index.php 
+and refresh and you will see your new database
+
+create a table at your database at symfony: 
+go to documentation of symfony or 
+1. First: create an Entity:
+Got to terminal:
+symfony console make:entity
+
+terminal will ask you: "Class name of the entity to create or update (e.g. AgreeablePopsicle)"
+Put in the class-name (starting with a capital) it will be the table-name later:
+we named it
+Product
+
+terminal will ask you: " Add the ability to broadcast entity updates using Symfony UX Turbo? (yes/no) [no]:"
+"NO" asking if you want a Test-Server, "NO", because you have to develope this seperatly
+
+terminal will ask you: " New property name (press <return> to stop adding fields):"
+"id" important: don ´t define it, because it`s "automatical" covered by symfony and it is a PRIMARY_KEY with AUTO_INCREMENT
+we take (trainer) name for "product_name" or "product_name":
+"product_name" 
+
+terminal will ask you: " Field type (enter ? to see all types) [string]:"
+put "?" into terminal to show you the options. The options are: decimal and guid.
+click on of the option to see further possibilities:: like:
+Main Types:
+    string or ascii_string
+    text
+    loolean
+    integer or smallint or bigint
+    float
+Relationship/Associations
+    RelationshipManyToOne
+    OneToMany
+    ManyToMany
+
+We take "string" it is default
+
+!imporatant! choice "text" and don`t take "string" for description 
+
+terminal will ask you: "Field length [255]:"
+we put "50"
+
+terminal will ask you: " Can this field be null in the database (nullable) (yes/no) [no]:"
+we want "NOT null", every entry at "product_name" have to have an entry - a name -
+so we take "NO"
+
+terminal will ask you:  "Add another property? Enter the property name (or press <return> to stop adding fields):"
+means taht you will enter a the column of the table like "price"
+we named it 
+"price_Brutto"
+
+terminal will ask you: " Field type (enter ? to see all types) [string]:"
+we take "decimal"
+
+terminal will ask you:  " Precision (total number of digits stored: 100.00 would be 5) [10]:"
+We take "10" - means 8 numers in front of ","
+
+terminal will ask you:  "Scale (number of decimals to store: 100.00 would be 2) [0]:"
+which take "2"
+
+terminal will ask you:  " Can this field be null in the database (nullable) (yes/no) [no]:"
+"NO" - means NOT null, because every product needs a price
+
+terminal shows:
+"Next: When you´re ready, create a migration with "
+symfony.exe console make:migration
+"
+We copy it and put it to the terminal line
+
+
+At the project "day3" we added a column "createAT"
+1. step: 
+Got to terminal:
+symfony console make:entity
+
+2. step:
+terminal will ask you: "Class name of the entity to create or update (e.g. AgreeablePopsicle)"
+Put in the class-name (starting with a capital) it will be the table-name later:
+we named it 
+"Product" 
+because we add a new column of an existing entity (named: "Product"), we want an update of an existing entity
+
+3.step:
+terminal will ask you: " New property name (press <return> to stop adding fields):"
+we take "createAT"
+
+4. step:
+terminal asks: 
+"
+Field type (enter ? to see all types) [datetime_immutable]
+"
+terminal asks this, because "creatAT" is a datetime or date type
+we take: 
+"
+?
+"
+5. step:
+we go to "Date/Time Types" and choice
+"datetime" 
+because we want to see when the product-set will be created (by admin)
+
+6. step:
+terminal will ask you: " Can this field be null in the database (nullable) (yes/no) [no]:"
+we want "NOT null", every entry at "datetime" have to have an entry - a datetime -
+so we take "NO" or "enter" because it`s default
+
+7. step:
+terminal shows:
+"Next: When you´re ready, create a migration with "
+symfony.exe console make:migration
+"
+We copy it and put it to the terminal line
+
+8. step:
+terminal shows:
+"Review the new migration then run it with "
+symfony.exe console doctrine:migrations:migrate
+"
+We copy it and put it to the terminal line
+
+9. step:
+terminal shows:
+"WARNING! You are about to execute a migration in database "symfony.exe_day3" that coult result in schema changes and data loss. Are you sure you wish to continue? (yes/no) [yes]:"
+we take "yes" or "enter" because it`s default 
+
+10. we take a look at MySQL- phpmyAdmin
+
+
+Add another property? Enter the property name (or press <return> to stop adding fields):"
+means taht you will enter a the column of the table like "price"
+"
+the table with columns is created, you will see table at the Folder "Entity" named "Product.php"
+
+
+To upate entity or parts of it:
+copy at the entity file like "Product.php" for example "price_Brutto"
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
+    private ?string $price_Brutto = null;
+
+to remove a column:
+mark the first 
+    "
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
+    private ?string $price_Brutto = null;
+    "
+    "Strg" + "x"
+
+mark  and delete the second-part at the entity-File like "Product.php": 
+    "
+        public function getPriceBrutto(): ?string
+    {
+        return $this->price_Brutto;
+    }
+
+    public function setPriceBrutto(string $price_Brutto): static
+    {
+        $this->price_Brutto = $price_Brutto;
+
+        return $this;
+    }
+    "
+to add an column: for example Picture
+1. terminal:
+symfony console make:entity
+
+2. terminal:
+asks: "Class name of the entity to create or update (e.g. VictoriousChef):"
+
+For update:
+File in the Database name or file-name of the folder Entity but without ".php" ending
+or example "Product.php" 
+so put "Product" to the terminal
+
+3. terminal:
+asks " New property name (press <return> to stop adding fields):"
+
+we add a new column named "picture_products"
+
+4. terminal:
+asks:" Field type (enter ? to see all types) [string]:"
+
+we take for this quest Picture "string"
+
+5. terminal asks:
+" Field length [255]:"
+
+we take "255"
+
+6. terminal asks:
+" Can this field be null in the database (nullable) (yes/no) [no]:"
+
+we take "YES" because the picture can be added later by admin and we will have a default product-picture
+
+7. terminal asks:
+" Add another property? Enter the property name (or press <return> to stop adding fields):"
+
+We don`t want to add more so we take "enter"
+and we can see the result at the Entity-Folder at the "Product.php"-File
+
+
+
+to delete
+go to Folder "Entity" - "Product.php"
+
+delete first and second part of column-code there 
+
+and
+
+got Folder "Repository" -" ProductRepository.php"
+
+We create Entity  to create a "table" we have to do:
+1. step:
+terminal asks: "symfony.exe console make:migration"
+
+put to terminal: " symfony console make:migration "
+
+2. step:
+
+we copy and paste it into terminal "symfony.exe console make:migration"
+
+? problems i don`t  get table at mySQL at phpmyadmin
+
+3. step:
+terminal asks: "[WARNING] You have 1 available migrations to execute."
+
+we take "yes"
+
+4. step:
+Only when you want version-control
+
+put "symfony console doctrine:schema:update --force --complete" 
+to terminal
+
+Insert data to the database:
+Every Entity needs an own controller
+
+go to terminal and put in:
+symfony console make:controller
+
+terminals asks:
+" Choose a name for your controller class (e.g. TinyPizzaController):"
+
+we take "Product"
+
+terminal (symfony creates ) by default following files:
+ created: src/Controller/ProductController.php
+ created: templates/product/index.html.twig
+
+
+next step: go to Folder "src" - "Controller" and choice "ProductController.php"
+
+code inside "ProductController.php":
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+class ProductController extends AbstractController
+{
+    #[Route('/product', name: 'app_product')]
+    public function index(): Response
+    {
+        return $this->render('product/index.html.twig', [
+            'controller_name' => 'ProductController',
+        ]);
+    }
+}
+
+each Controller-route-name has to be unique, we will change "#[Route('/product', name: 'app_product')]" to  products "#[Route('/products', name: 'app_product')]"
+
+before you have to change the Controller-route-name at another Controller-File for example at "HomeStaticController.php" or "TestController.php" 
+
+so you change at this files, the code-line " #[Route('/products', name: 'products_page')]" to "test" (for example):
+" #[Route('/products/test', name: 'products_page')]
+otherwise you will get an "error"
+
+go to "ProductController.php" and remove "'controller_name' => 'ProductController',"
+go to Folder"Templates" - "product" - to file "index.html.twig"
+
+delete the content inside the "block body" and change the content at the "block title" to "Products list"
+
+choice Folder "Respository" - File "ProductRepository.php":
+there you can see four different methods by comment:
+"
+ * @method Product|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Product|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Product[]    findAll()
+ * @method Product[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ "
+we will take "findAll()"
+
+choice Folder "Controller" Fle "ProductController.php"
+choice the line "public function index(): Response" and change it to 
+"    
+public function index(ProductRepository $productRepository): Response
+"
+"$productRepository" comes from file "ProductRepository.php"
+
+add "$products = $productRepository->findAll();" in the line before "return $ths->render..." at the file "ProductController.php"
+
+add a line between the line " $products = ..." and the line "return $this-> ...":
+" dd($products);"
+for debugging
+comment this line out, if it works,
+AND between [] this [] you add the following code:
+"
+"products" => $products
+"
+
+the whole code of "class ProductController.php" is:
+"
+class ProductController extends AbstractController
+{
+    #[Route('/products', name: 'app_product')]
+    public function index(ProductRepository $productRepository): Response
+    {
+        $products = $productRepository->findAll();
+        // dd($products);
+        return $this->render('product/index.html.twig', [
+            "products" => $products
+        ]);
+    }
+}
+"
+
+change to folder "templates" - "product" - "index.html.twig" - add at the "body block" -
+to integrate the loop-function (in "" is from "ProductController.php" - the array):
+{% for product in products %}
+
+{% endfor %}
+
+Now integrate the layout  in the "for block" - i create a css and js-File for a card-element:
+so i have to integrate both file to the different blocks of stylesheet and script:
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("styles/products.css") }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('JS/products.js') }}"></script>
+{% endblock %}
+
+add the html-code for the card in the "for block"
+
+to integrate the different column-names from database use following example:
+
+<div>
+<p>{{ product.product_name }}</p> 
+<p>{{ product.price_Brutto }}</p> 
+
+comment: "product_picture" will be better than "picture", because we will have "user_picture" too and the following code-line is only for pictures with a link and NOT a picture with an upload-function
+
+<img src="{{ product.picture }}" alt="">
+<hr>
+</div>
+
+
+Add some data-sets at symfony and not by MySQL/phpmyAdmin or a create-Page:
+Why? becauser symfony doesn`t do Foreign-Keys automatical:
+
+go Folder "Controller" - "ProductController.php"
+copy the last entry:
+"
+    #[Route('/products', name: 'app_product')]
+    public function index(ProductRepository $productRepository): Response
+    {
+        $products = $productRepository->findAll();
+        // dd($products);
+        return $this->render('product/index.html.twig', [
+            "products" => $products
+        ]);
+    }
+"
+add the pasted code to the following code (something going wrong: "Undefined type 'App\Controller\Product' intelephense(P1009) [Ln 26, Col 24]):
+"
+    #[Route('/products/create_products', name: 'app_create_products_product')]
+    public function create(EntityManagerInterface $em): Response
+    {
+        $product = new Product();
+        $product->setName("Car");
+        $product->setPrice(33000.50);
+        $product->setPicture("https://cdn.pixabay.com/photo/2020/05/19/10/05/opel-5190050_1280.jpg");
+        // for debugging
+        // dd($product);
+        $em->persist($product); // telling doctrine that there is an object ready to be inserted
+
+        $em->flush(); //create a query (INSERT INTO product and executing it)
+
+        // return new Response ("A new product has been created with the id={$product->getId()}");
+        return $this->redirectToRoute("app_product");
+    }
+"
+
+
+
+terminals asks:
+" Next: Open your new controller class and add some pages! "
+
+to create a CRUD:
+1. step: terminal: we put in
+"
+symfony console make:crud
+"
+2. step:
+terminal asks "the class name of the entity to create CRUD (e.g. VictoriousKangaroo):"
+we put in
+"
+Product
+"
+we choose "Product" because we at the folder "Entity" there is the file "Product.php", but we have to put only "Product"
+
+3. step:
+terminal asks "choose a naame for your controller class (e.g. ProductController) [ProductController]:"
+we put in
+"
+ProductController
+"
+4. step:
+terminal asks "Do you want to generate test for the controller [Experimental] (yes/no) [no]:"
+we put in
+"
+no
+"
+5. step:
+terminal asks "Success!
+Next: Check your new CRUD by going to /product/"
+
+6. step:
+we put to the terminal:
+"
+symfony serve
+"
+7. step:
+terminal says, when you are creating a CRUD, go to "/product/" means that you have to added to the url 
+
+go to browser and put at url-line:
+"
+localhost:8000/product/
+"
+
+8. step:
+now we are able to create new records (records) at the browser to the database.
+After we click "save" we can "edit" and "show" the records and a "create new"-link (button).
+at "show" we got also a "delete"-Button  and a link "back to list" and the "edit"-Button
+
+NEXT Step:
+integrate a layout (design) to the CRUD
+
+1. version: bootstrap
+1. step:
+go to Browser and search:
+"form theme in symfony"
+search result:
+symfony - doc -current
+How to work with Form Themes (Symfony Docs)
+click on it
+
+2. step:
+"Applying Themes to all Forms" at symfony.com.
+Go to VSC - File ".env"
+ search for "config/packages/twig.yaml" with
+ "Strg" + "p"
+
+put into "Search"-Field on the top:
+"twig.yaml"
+
+at the folder "config" - folder "packages" you will see the file "twig.yaml"
+open this file and delete the commen-line.
+
+At "Applying Themes to all Forms" at symfony.com take  and copy the line 
+"form_themes: ['bootstrap_5_horizontal_layout.html.twig]"
+and paste it to the file "twig.yaml" under the line
+"
+file_name_pattern: '*.twig'
+"
+!Important! with the space because twig is space sensitive
+
+2. version:
+
+"Applying Themes to all Forms" at symfony.com.
+choose for exxample "tailwind_2_layout.html.twig" to copy it.
+Paste it instead of the "bootstrap"-Code at the file "twig.yaml"
+
+but we have to install "tailwindcss.com" "Play CDN" with browser:
+"tailwindcss.com/docs/installation/play-cdn"
+copy the line in the code of index.html
+"<script src="https://cdn.tailwindcss.com"></script>
+and add this line to Folder "templates" - File "base.html.twig" outside of the "block stylesheet"  in the head
+
+3. version the css- and js-version:
+at the controller (e.g. ProductController.php) you see the file where you can manipulate the layout/ design (e.g. Folder "product" - File "index.htm.twig") and integrate there css- and js-File
+go to this file between "{%  for product in products %}" and the line "{% endfor %} - it`s the loop function there - and put your layout inside with your variables like
+{{ product.name }}
+{{ product.description }} 
+or
+<a href="{{  path('app-product_show', {'id': product.id}) }}">show</a>
+or
+<a href="{{  path('app-product_edit', {'id': product.id}) }}">Edit</a>
+
+repeat all steps of 3. version at the folder "product" - files "show.html.twig" & "edit.html.twig" & "new.html.twig" & "_delete_form.html.twig" (at "_delete... you can modify the "Delete"-Button)
+
+
+Add Foreign_KEY: and manipulate "Form":
+
+go to folder "product" - File "_form.html.twig"
+go to the folder "src" - Folder "Form" - File "ProductType.php" that`s te form you see on the page (browser)
+
+1. step:
+Browser - search for "form builder symfony"
+select "symfony.com/doc/current/forms.html"
+select there "Installation"
+copy "composer require symfony/form"
+
+Browser - search for "text type symfony"
+symfony.com/doc/current/reference/forms/types/text.html
+select "attr" - "Inherited Options" 
+line "
+'attr' => ['class' => 'tinymce']
+"
+copy it
+go to the folder "src" - Folder "Form" - File "ProductType.php"
+to the part of the code "
+$builder
+    ->add('name', null, [the folder "src" - Folder "Form" - File "ProductType.php"])
+"
+and paste at the line  "
+->add('name', null, [ paste it here ])
+"
+your code will be "
+->add('name', null, [ 'attr' => ['class' => 'tinymce']])
+
+tinymce: you put a bootstrap code like 'form-control' than  'tinymce'
+->add('name', null, [ 'attr' => ['class' => 'form-control', 'placeholder' => 'Product name']])
+
+to style this form by my own way: to manipulate the inputs
+add
+->add('name', null, [ 'attr' => ['class' => 'form-control', 'placeholder' => 'Product name', 'id' => 'input']])
+
+BUT we have to put "input" to a CSS-File "input"
+
+it works at "
+->add('price', null, [ 'attr' => ['class' => 'form-control', 'placeholder' => 'Product price']])
+
+at "
+->add('createdAt', null, [ 'widget' => 'single-text', ]);
+"
+remove it
+->add('createdAt', null, [ 'widget' => 'single-text', ])
+
+and got to the Controller at folder "Controller" - file "ProductController.php"
+and put "
+$currentDate = new DateTime("now");
+" there.
+
+add "
+     $product->setCreatedAt($currentDate);
+"
+the whole code there is: "
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Product;
+use App\Form\ProductType;
+use App\Repository\ProductRepository;
+use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+#[Route('/product')]
+class ProductController extends AbstractController
+{
+    #[Route('/', name: 'app_product_index', methods: ['GET'])]
+    public function index(ProductRepository $productRepository): Response
+    {
+        return $this->render('product/index.html.twig', [
+            'products' => $productRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+        $currentDate = new DateTime("now");
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $product->setCreatedAt($currentDate);
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('product/new.html.twig', [
+            'product' => $product,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
+    public function show(Product $product): Response
+    {
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('product/edit.html.twig', [
+            'product' => $product,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
+    public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->getPayload()->get('_token'))) {
+            $entityManager->remove($product);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+    }
+}
+"
+
+
+create status table
+
+symfony console make:controller
+
+2. step:
+Status
+no
+
+3. Add fields (column)
+name
+string
+50
+
+
+symfony console doctrine:schema:update --force --complete
+done
+
+make an update of an entity: to add an FOREIGN_KEY:
+Terminal:
+symfony console make:entity
+Product
+fk_status
+Terminal asks: " Field type (enter ? to see all types) [string]:"
+relation
+Terminal asks: " What class should this entity be related to?:"
+Status
+Terminal asks: " Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:"
+relation (to get all options explained)
+ManyToOne (means Each product related (has) one Status, Each Status can relate to (can have) many Product objects.)
+
+Terminal asks: " Is the Product.fk_status property allowed to be null (nullable)? (yes/no) [yes]"
+no
+Terminal asks: "  Do you want to add a new property to Status so that you can access/update Product objects from it - e.g. $status->getProducts()? (yes/no) [yes]:"
+no
+Terminal asks: " Add another property? Enter the property name (or press <return> to stop adding fields):"
+no (enter)
+symfony console doctrine:schema:update --force --complete
+Important: When you get an error: delete the products at the database (MySQL-PHPMyAdmin) and put 
+"symfony console doctrine:schema:update --force --complete
+" again to the terminal
+
+Add "Satus"-Field to Create Page:
+go to Folder "src" - "Entity" - File "Product.php"
+go to Browser: entityType Field symfony doc
+https://symfony.com/doc/current/reference/forms/types/entity.html
+copy "
+use App\Entity\User;
+"
+go to Folder "Form" - File "ProductType.php"
+go to the beginning of file:
+paste "use App\Entity\User;"
+and change "User" to  "Status" -"use App\Entity\Status;"
+
+go back to browser and copy "
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+"
+go to Folder "Form" - File "ProductType.php"
+go to the beginning of file and paste it 
+
+go back to browser and copy "
+->add('users', EntityType::class, [
+    // looks for choices from this entity
+    'class' => User::class,
+
+    // uses the User.username property as the visible option string
+    'choice_label' => 'username',
+
+    // used to render a select box, check boxes or radios
+    // 'multiple' => true,
+    // 'expanded' => true,
+]);
+"
+go to Folder "Form" - File "ProductType.php"
+go to "$builder" and paste it the end of "$builder" 
+! important! take care of the ";" - only at the end of "$builder"
+">add('users', EntityType::class, [..." - change 'users' to "fk_status"
+
+"'class' => User::class," change "User" to "Status"
+
+go back to browser and copy "
+'label' => 'The ZIP/Postal code',
+"
+go to Folder "Form" - File "ProductType.php"
+go below to 'choice_label' => 'name',
+add there "
+"label" => "Status",
+"
+go to "Controller" -  file "ProductController.php"
+at the last "return" paragraph after the line "
+'product' => $product, ...
+"
+add "
+'status' => $product->getFkSatus()
+"
+
+go to "templates" - folder "product" file "show.html.twig"
+to show status at details (show.html.twig)
+copy the "description"-lines and paste them afterwards them
+change the line "
+{{ product.description }}
+"
+to
+"
+{{ status.name }}
+"
+
+FileUpload - file_upload:
+browser: file upload symfony 
+copy
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
+paste it at Folder "Form" file "ProductType.php"
+at the end of the "use" lines.
+
+browser: copy
+use Symfony\Component\Validator\Constraints\File;
+paste it to Folder "Form" file "ProductType.php"
+at the end of the "use" lines.
+
+browser: copy "
+->add('brochure', FileType::class, [
+                'label' => 'Brochure (PDF file)',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using attributes
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ],
+            ])
+        "
+paste it to Folder "Form" file "ProductType.php"
+at the end of the "public function" lines infront of the ";"
+"
+picture 
+" instead of "brochure" (2 times)
+and "png, jpg, jpeg file" instead of "PDF File"
+
+"
+'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpg',
+                            'image/JPEG',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid image file',
+                    ])
+"
+instead of "
+'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+"
+go to Folder "Form" File "ProductType.php"
+there we can only define class, id, placeholder, etc - all HTML-attribute, etc, but no HTML-Code
+e.g.
+->add('price', null, [
+                "attr" => [
+                    "class" => "form-control",
+                    "placeholder" => "Product price"
+                ]
+            ])
+            ->add('description', null, [
+                "attr" => [
+                    "class" => "form-control",
+                    "placeholder" => "Product Description"
+                ]
+            ])
+
+
+to design the form,
+go to templates - product - (edt, create) and design the input-Fields there
+
+next step: create a service, we can use a service in multiple controllers (e.g. for products and users - registration ):
+browser : https://symfony.com/doc/current/controller/upload_file.html#creating-an-uploader-service
+
+
+
+go to Folder "src, create there a new folder named "Service", create a file named "fileUploader.php"
+
+copy code from browser (Creating an Uploader Service:):
+namespace App\Service;
+
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
+class FileUploader
+{
+    public function __construct(
+        private string $targetDirectory,
+        private SluggerInterface $slugger,
+    ) {
+    }
+
+    public function upload(UploadedFile $file): string
+    {
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $this->slugger->slug($originalFilename);
+        $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+        try {
+            $file->move($this->getTargetDirectory(), $fileName);
+        } catch (FileException $e) {
+            // ... handle exception if something happens during file upload
+        }
+
+        return $fileName;
+    }
+
+    public function getTargetDirectory(): string
+    {
+        return $this->targetDirectory;
+    }
+}
+
+and paste it into the new file "fileUploader.php"
+add an <?php openning and paste it afterwards
+
+browser: "then define a service for this class"
+copy "services.yaml"
+go to VSC
+press "Strg" + "p" and serach for this file:
+
+services.yaml is based at the folder "config" - file "services.yaml"
+copy from browser:
+"
+App\Service\FileUploader:
+        arguments:
+            $targetDirectory: '%brochures_directory%'
+"
+go to  "services.yaml"
+and paste the copied-code from browser after the app-paragraph:
+
+Browser: copy "
+brochures_directory: '%kernel.project_dir%/public/uploads/brochures'
+"
+go to  "services.yaml"
+and paste the copied-code from browser into the "parameters"-paragraph:
+
+we take "picture_directory" - 2 times (at parameters & App/service)- instead of "brochures_directory"
+
+and at the code "'%kernel.project_dir%/public/uploads/brochures' 
+write "uploads" instead of "brochures"
+
+next step: create a folder at folder "public" named "uploads"
+means: every picture which is uploaded, will inside the folder "public" - folder "uploads"
+
+go to "ProductController.php" search for "new" there
+go to browser and copy "FileUploader $fileUploader"
+paste there. the new code is:
+    #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
+    {
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+        $currentDate = new DateTime("now");
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $picture = $form->get('picture')->getData();
+            if ($picture) {
+                $pictureName = $fileUploader->upload($picture);
+                $product->setPicture($pictureName);
+            } else {
+                $product->setPicture("product.jpg");
+            }
+            $product->setCreatedAt($currentDate);
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+next step:
+copy "
+use App\Service\FileUploader;
+" from browser and put it to the top of "ProductController.php"
+
+copy "
+$brochureFile = $form->get('brochure')->getData();
+        if ($brochureFile) {
+            $brochureFileName = $fileUploader->upload($brochureFile);
+            $product->setBrochureFilename($brochureFileName);
+        }
+" from browser and put it to "ProductController.php" and put "picture" instead of "brochure".
+and add "setPicture".
+add with "else" we add a Default-Product-Picture.
+the new code is: "
+        if ($form->isSubmitted() && $form->isValid()) {
+            $picture = $form->get('picture')->getData();
+            if ($picture) {
+                $pictureName = $fileUploader->upload($picture);
+                $product->setPicture($pictureName);
+            } else {
+                $product->setPicture("product.jpg");
+            }
+            $product->setCreatedAt($currentDate);
+            $entityManager->persist($product);
+            $entityManager->flush();
+"
+
+"picture" because we add this at "ProductType.php"
+
+!important! don´t forget to integrate at the html-code of - folder "templates" - folder "product" - file "index.html.twig" - an image
+        <img src="{{ asset('uploads/' ~ product.picture ) }}" alt="" />
+
+upload is ready  at "create"
+now we have to adopted at "upload"
+
+go to "ProjectController.php" and copy "
+$picture = $form->get('picture')->getData();
+            if ($picture) {
+                $pictureName = $fileUploader->upload($picture);
+                $product->setPicture($pictureName);
+            } else {
+                $product->setPicture("product.jpg");
+            }
+"
+and paste it at the same file to the "edit"-paragraph
+add "fileUploader, $fileUploader" and adopted the else-function.
+the new code is:
+#[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
+    {
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $picture = $form->get('picture')->getData();
+            if ($picture) {
+                if ($product->getPicture() != 'product.jpg') {
+                    unlink($this->getParameter('picture_directory') . '/' . $product->getPicture());
+                }
+                $pictureName = $fileUploader->upload($picture);
+                $product->setPicture($pictureName);
+            }
+            $entityManager->flush();
+
+next step:
+copy here "
+                if ($product->getPicture() != 'product.jpg') {
+                    unlink($this->getParameter('picture_directory') . '/' . $product->getPicture());
+"
+and paste it to delete.
+
+The "Delete"-paragraph at ProductController.php:
+    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
+    public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->getPayload()->get('_token'))) {
+            if ($product->getPicture() != 'product.jpg') {
+                unlink($this->getParameter('picture_directory') . '/' . $product->getPicture());
+            }
+            $entityManager->remove($product);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+    }
+}
+
+

@@ -1,0 +1,234 @@
+Symfony Day6 easy Admin - easyAdmin 
+
+change at .env:
+root, password, project-name and uncomment version 8.xxx, and the other version comment:
+DATABASE_URL="mysql://root:@127.0.0.1:3306/symfony_day6?serverVersion=8.0.32&charset=utf8mb4"
+
+
+Terminal: symfony console doctrine:database:create
+
+Terminal: symfony console make:entity
+
+Terminal:  Class name of the entity to create or update (e.g. GentleElephant):
+
+We choose: Todo
+
+Terminal: Add the ability to broadcast entity updatees using Symfony UX Turbo? (yes/no) [no];
+we choose: no
+because otherwise we have deploy it
+
+Terminal: New property name (press <return> to stop adding fields):
+name
+
+Field type (enter ? to see all types) [string]:
+string
+
+terminal: Field length [255]:
+255
+
+Terminal: Can this field be null in the database (nullable) (yes/no) [no]:
+no
+
+Terminal: Add another property ? Enter the property name (or press <return> to stop adding fields):
+description
+string
+255
+no
+<return>
+
+Success
+
+Terminal: When you´re ready, create a migration with symfony.exe console make:migration
+or
+symfony console doctrine:schema:updatee --force --complete
+
+symfony creates a table for you the database, take a look at phpMyAdmin
+
+How to integrate easyadmin at our project?
+Browser: easyadmin symfony
+https://symfony.com/bundles/EasyAdminBundle/current/index.html
+
+copy at Installation:
+composer require easycorp/easyadmin-bundle
+
+Terminal: composer require easycorp/easyadmin-bundle
+
+Terminal for takie a look at browser, how it looks: symfony serve
+
+Go back to:
+https://symfony.com/bundles/EasyAdminBundle/current/index.html
+click link there - create your first dashboard
+
+https://symfony.com/bundles/EasyAdminBundle/current/dashboards.html
+
+copy command:
+php bin/console make:admin:dashboard
+
+paste it to Terminal: 
+php bin/console make:admin:dashboard
+
+Terminal: Which class name do you prefer for your dashboard controller? [DashboardController]:
+DashboardController
+
+Terminal: in which directory of your project do you want to generate "DashboardController"? [src/Controller/Admin]:
+src/Controller/Admin
+
+done
+
+go Browser (/admin we get from symfony doc):
+127.0.0.1:8000/admin
+
+go VSC: src/Controller/Admin/DashboardController.php
+comment out the line: 
+return parent::index();
+
+next step: 
+uncomment the line and add the content between the ():
+   return $this->render('admin/dashboard.html.twig');
+
+copy:
+@EasyAdmin/page/content.html.twig
+
+go VSC: Folder "templates":
+create there a folder named "admin"
+with a file in it named: "dashboard.html.twig"
+
+go to templates/admin/dashboard.html.twig:
+paste there in{% extends "@EasyAdmin/page/content.html.twig" %}
+
+Browser: 127.0.0.1:8000/admin#
+There you can edit your view at dashboard-browser-view
+
+to create CRUD for easyadmin per easy way:
+Terminal: symfony console make:admin:crud
+
+Terminal: 
+Which doctrine entity are you going to manage with this CRUD controller?:
+[0] App\Entity\Todo
+
+We take  0
+
+Terminal: Which directory do you want to generate the CRUD controller in ? [src/Controller/Admin/]:
+src/Controller/Admin
+
+Terminal: Namespace of the generated CRUD controller [App\Controller\Admin]
+App\Controller\Admin
+
+go VSC: src/Controller/DashboardController.php:
+uncomment and add the line:
+        yield MenuItem::linkToCrud('Todo', 'fas fa-list', Todo::class);
+
+<return> to import it on the top of the code of this file
+
+create a FOREIGN_KEY:
+symfony console make:entity
+
+Terminal: Class name of the entity to create or update (e.g. AgreeableElephant):
+we call it:
+Status
+
+Terminal: Add the ability to broadcast entity updates using Symfony UX Turbo? (yes/no) [no]:
+no
+
+Terminal: New property name (press <return> to stop adding fields):
+name
+string
+255
+no
+<return>
+
+Success
+
+we create an extra column at src/Entity/Todo.php and this will link (connected) src/Entity/Satus.php:
+Terminal: symfony consolemake:entity
+
+Terminal, we write an existing name, because we want to update it: 
+Todo
+
+Terminal: New property name (press <return> to stop adding fields):
+status
+
+Terminal: Field type (enter ? to see all types) [string]:
+relation
+
+Terminal: What class should this entity be related to?:
+Status
+
+Terminal: Relation Type? [ManyToOne, OneToMany, OneToOne]:
+ManyToOne
+
+Terminal: Is the Todo.status property allowed to be null (nullable)? (yes/no) [yes]:
+yes (because we have already records)
+
+Terminal: add ...
+no
+<return>
+
+Success
+
+Updating the database:
+Terminal: symfony console doctrine:schema:update --force
+
+- database updated successfully
+
+Create a CRUD for status:
+
+Terminal: symfony console make:admin:crud
+
+Terminal: 
+Wich doctrine entity are you going to manage with this CRUD controller?:
+[0] App\Entity\Status
+[1] App\Entity\Todo
+
+We take: 0 (because Todo we have already)
+
+Terminal: Which directory do you want to generate the CRUD controller in? [src/Controller/Admin]:
+src/Controller/Admin
+
+Terminal: Namespace of the generated CRUD controller [App\Controller\Admin]:
+App\Controller\Admin
+
+go VSC: src/Controller/DashboardController.php:
+copy:
+        yield MenuItem::linkToCrud('Todo', 'fas fa-list', Todo::class);
+
+paste & modify it to:
+        yield MenuItem::linkToCrud('Status', 'fas fa-list', Status::class);
+
+
+FOREIGN_KEYS have to handle manualy.
+
+Browser:
+https://symfony.com/bundles/EasyAdminBundle/current/dashboards.html
+
+search: field type
+
+https://symfony.com/bundles/EasyAdminBundle/current/fields.html#field-types
+
+A lot of fieldTypes there:
+
+AssociationField handles FOREIGN_KEY
+
+click on it
+https://symfony.com/bundles/EasyAdminBundle/current/fields/AssociationField.html
+
+go to Options - autocomplete and copy:
+
+go VSC: src/Controller/TodoController.php:
+
+Make a label for status: to see words and not Status 1 and status 2:
+Browser: https://symfony.com/bundles/EasyAdminBundle/current/fields.html#misc-options
+
+uncomment and modify following lines with :  AssociationField::new('...')->autocomplete();:
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            TextField::new('name'),
+            TextEditorField::new('description'),
+            AssociationField::new('status')->setFormTypeOption('choice_label', function ($choice) {
+                return $choice->getName();
+            })
+
+        ];
+    }

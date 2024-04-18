@@ -1,0 +1,226 @@
+<mxfile host="65bd71144e">
+    <diagram id="Wi6ID6cuAUUSFF_uBPji" name="Page-1">
+        <mxGraphModel dx="1654" dy="1685" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Model:&lt;br&gt;functions&lt;br&gt;(Entity) to manipulate the database" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="390" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="View:&lt;br&gt;(templates)&lt;br&gt;to show the layout" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="390" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Controller:&lt;br&gt;to bring method from database" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="240" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="MVC: Model&amp;nbsp; View Controller" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="-50" width="540" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="The Boss:&lt;br&gt;functions from&amp;nbsp; model&lt;br&gt;decide which file take care of the layout" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="130" width="510" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="/ about or / home" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="30" width="430" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="main template:&amp;nbsp;&lt;br&gt;base.html.twig" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="-50" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="550" width="630" height="480" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="bootstrap links" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="650" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="navbar code" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="720" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="main code" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="860" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="main code" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="790" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="footer code" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="930" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="shape=link;html=1;" parent="1" target="22" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="330" y="990" as="sourcePoint"/>
+                        <mxPoint x="340" y="640" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="Main Template:&lt;br&gt;base.html.twig" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="570" width="260" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="Default 3 blocks" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="600" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="block css" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="720" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="block js" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="790" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="block body" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="860" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Default&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="735" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Default&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="810" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Default&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="877" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="block title" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="650" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="extend base&lt;br&gt;&lt;br&gt;block title: About us page&lt;br&gt;&lt;br&gt;block body start:&lt;br&gt;content&lt;br&gt;&lt;br&gt;endblock" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="1100" width="270" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="extend base&lt;br&gt;&lt;br&gt;block body start&lt;br&gt;&lt;br&gt;content (e.g. form)&lt;br&gt;&lt;br&gt;endblock" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="1100" width="270" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="About" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-60" y="1060" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Contact" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="1060" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="table" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-50" y="1500" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="the table at symfony" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="1430" width="280" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="is represented by" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-50" y="1570" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="Entity:&lt;br&gt;&lt;br&gt;is a map telling you what is the table-name and the columns.&lt;br&gt;&lt;br&gt;Entity will creates the table for you" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-50" y="1600" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Entity:&lt;br&gt;&lt;br&gt;every Entity needs an own Controller" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-50" y="1780" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="you pass a number from &lt;br&gt;an input to the fk column" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+                    <mxGeometry x="-50" y="2010" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="you pass the whole&amp;nbsp; record&lt;br&gt;&amp;nbsp;not just the id (You pass&lt;br&gt;&amp;nbsp;an entity type) an object&lt;br&gt;&amp;nbsp;not just a number" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="2010" width="200" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="PHP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry y="1970" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Symfony" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="1970" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="2270" width="620" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="user" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="2220" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="see all products" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-110" y="2270" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="Admin accesss" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="2220" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="CRUD: Create, Read, Update, Delete" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="2230" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="when we do Login-System we don´t use Entity, we use:&lt;br&gt;&lt;br&gt;make:user" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-110" y="2360" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="2670" width="540" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="Login" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="2610" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="email" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="2700" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="password" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="2750" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="roles" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="2800" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="lastname" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="2940" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="firstname" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="2890" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="picture" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="2990" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="basic by symfony: 3 column" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="2640" width="300" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="what we do until now" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="3100" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="created a database&lt;br&gt;add bootstrap&lt;br&gt;make:entity&lt;br&gt;Product&lt;br&gt;symfony console doctrine:schem:update --force&lt;br&gt;make:crud&lt;br&gt;Product&lt;br&gt;make:user&lt;br&gt;to add more fields to the user&lt;br&gt;make:entity&lt;br&gt;symfony console doctrine:schema:update --force&lt;br&gt;make:auth&lt;br&gt;Login form&lt;br&gt;&lt;br&gt;make:registration-form" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="3140" width="410" height="350" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="easy Admin" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="3670" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="entity&lt;br&gt;&lt;br&gt;table&lt;br&gt;&lt;br&gt;toDo" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="3710" width="210" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="API" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="3920" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="4020" width="160" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="Symfony" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="3990" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="backend" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="4080" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="4061" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="660" y="4064" as="sourcePoint"/>
+                        <mxPoint x="350" y="4063.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="73" value="" style="endArrow=none;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;endFill=0;startArrow=classic;startFill=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="660" y="4110" as="sourcePoint"/>
+                        <mxPoint x="350" y="4109.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="74" value="User send request to" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="405" y="4031" width="195" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="symfony send response back,&lt;br&gt;symfony take care of security" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="4111" width="310" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="255" y="4045" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="" style="endArrow=classic;html=1;sketch=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="76" target="67">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="270" y="3900" as="sourcePoint"/>
+                        <mxPoint x="320" y="3850" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="78" value="API" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="265" y="4070" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="API is more secure" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="245" y="4130" width="100" height="70" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,191 @@
+Symfony Day 7 - API
+
+cmd
+
+symfony new symfony_api
+
+Terminal: composer require api
+
+This command installs a lot of packages we need to work with API
+
+Terminal:
+  Do you want to include Docker configuration from recipes?
+    [y] Yes
+    [n] No
+    [p] Yes permanently, never ask again for this project
+    [x] No permanently, never ask again for this project
+    (defaults to y):
+
+we take NO
+
+Fix the connection:
+go VSC: .env-File:
+DATABASE_URL="mysql://root:@127.0.0.1:3306/symfony_api_day7?serverVersion=8.0.32&charset=utf8mb4"
+
+Create database:
+Terminal: symfony console doctrine:database:create
+
+create table:
+Terminal: symfony console make:entity
+
+error
+
+Copy from the red line:
+composer require symfony/maker-bundle --dev   
+  
+Terminal: composer require symfony/maker-bundle --dev   
+  
+create table:
+Terminal: symfony console make:entity
+
+Terminal:  Class name of the entity to create or update (e.g. BraveElephant):
+
+2 ways to create API:
+1. manually
+2. API-Plattform
+
+We start with
+1. manually: to create API
+
+Terminal:  Class name of the entity to create or update (e.g. BraveElephant):
+Product
+
+Terminal:  Mark this class as an API Platform resource (expose a CRUD API for it) (yes/no) [no]:
+no
+because we do it manually
+
+Terminal:  New property name (press <return> to stop adding fields):
+name
+string
+255
+no
+
+Terminal:  New property name (press <return> to stop adding fields):
+price
+decimal
+10
+2
+<return>
+
+create the table:
+Terminal: symfony console doctrine:schema:update --force
+
+done
+
+create a controller:
+Terminal: symfony console make:controller
+
+Terminal:  Choose a name for your controller class (e.g. DeliciousPizzaController):
+ProductAPI
+
+VSC: src/Controller/ProductAPIController.php
+Modify following paragraph:
+{
+    #[Route('/product/a/p/i', name: 'app_product_a_p_i')]
+    public function index(): JsonResponse
+    {
+        return $this->json([
+            "message" => "",
+            "data" => "",
+            "status" => ""
+        ]);
+    }
+}
+
+to, the new code:
+
+
+
+go VSC Extension:
+search for thunder client and install it.
+It´s a tool to test/control API
+click on Thunder client symbol: right column of VSC.
+Take "POST" and http:127.0.0.1:8000/api/new
+
+go to Body - Form:
+put "name" with value (Hat) and "price" with value "30" to the fields
+
+then click Button "Send"
+
+name, Shoe
+price, 50
+at thunder client
+http://127.0.0.1:8000/api/1/edit
+https://localhost:8000/api/1/edit
+http://127.0.0.1:8000/api/1/remove
+
+
+2 ways to create API:
+2. API-Plattform:
+
+create an own Entity:
+Terminal: symfony console make:entity 
+
+Terminal:  Class name of the entity to create or update (e.g. DeliciousPizza):
+Test
+
+Terminal:  Mark this class as an API Platform resource (expose a CRUD API for it) (yes/no) [no]:
+yes
+
+If we forgot the fields/column:
+symfony console make:entity
+
+Put the existing name of the entity to update the fields
+We took Test before
+
+
+name
+string
+no
+
+price
+decimal
+10
+2
+no
+
+Create and / or Update table
+Terminal: symfony console doctrine:schema:update --force
+done
+
+go VSC: src/Entity/Test.php
+we need a line:
+#[ApiResource]
+if we have not this line, put it in
+
+Create and / or Update table
+Terminal: symfony console doctrine:schema:update --force
+
+done
+
+To test it:
+Browser: localhost:8000/api
+We see the API Plattform.
+
+create a Test resource (e.g. product).
+Go to POST 
+click "try it out"
+
+modify name-"string" to "Hat"
+mdifiy price-"string" to "33.5"
+Click "Excute"
+
+Browser: api Plattform
+https://api-platform.com/
+
+click documentation
+https://api-platform.com/docs/distribution/
+
+we have no possibility to code, we have to follow the documentation at api-Plattform
+
+
+
+
+
+
+<return>
+
+
+Next we need bundle
+
+Terminal: symfony_api>composer require symfony

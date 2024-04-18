@@ -1,0 +1,92 @@
+Start symfony new project
+
+go to folder where you will create the folder of your project
+right click - choose: Open Git Bash here
+
+symfony new --webapp nameOfYourProject
+
+open your folder with VSC
+
+
+Example: search: create upload-File for symfony 
+https://symfony.com/doc/current/controller/upload_file.html
+
+
+
+Controller 
+create:
+cmd oder terminal in VSC:
+php bin/console make:controller
+
+symfony console make:controller
+
+next step: give the new controller a name
+
+
+twig language:
+Strg (+) shift (+) p
+put in: Format ... with
+choose: 
+
+show in browser:
+symfony serve
+
+scroll to server folder (green field) and right click at https://127.0.0.1:8000 with "Strg"
+- open project in browser 
+
+path for links: check controller (#[Route('/', ....) and than html-code for example navbar.html.twig:
+
+path for <a href={{ path("app_home_static") }}">: <-- this example HomeStaticController.php:  #[Route('/', name: 'app_home_static')] only take the name -->
+
+path for images : asset means that the path starts at the public folder:
+<img src="{{ asset("css/nav.css") }}"
+or
+<img src="{{ asset("images/product_images/name of picture") }}"
+
+include only for html-components, its starts at "templates"-level
+			{% include 'components/navbar/navbar.html.twig' %}
+
+to include css & js: always without the symfony "include":
+path for css & js : asset means that the path starts at the public folder:
+
+    		<link rel="stylesheet" href="{{ asset('styles/base.css') }}">
+  			<script src="{{ asset('JS/base.js') }}"></script>
+
+twig.symfony Dokumentation:
+https://twig.symfony.com/
+go to docs
+loops
+go to "for"
+
+example from twig-documentation: if else Sold out:
+{% if product.stock > 10 %}
+   Available
+{% elseif product.stock > 0 %}
+   Only {{ product.stock }} left!
+{% else %}
+   Sold-out!
+{% endif %}
+
+Date important:
+    {{ "now"|date("d/m/Y") }}
+
+
+
+
+
+
+
+Sweetallert instal und import to a project at "assets" -" "styles" - "app.css"
+1. to instal take code from https://sweetalert2.github.io/ and scroll down to "DOWNLOAD & INSTALL"
+npm install sweetalert2:
+2. import  at app.css
+npm install sweetalert2
+
+
+Controller Vorschlag Suggestion MJ:
+1 Controller per CRUD (only adm) - 1 CRUD per entity (e.g. User, Products) -
+1. create user controller 
+2. create products_cars 
+3. 
+1 Controller für User
+1 Controller für adm
